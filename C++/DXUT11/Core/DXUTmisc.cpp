@@ -11,6 +11,7 @@
 #undef min // use __min instead
 #undef max // use __max instead
 
+
 CDXUTTimer* WINAPI DXUTGetGlobalTimer()
 {
     // Using an accessor function gives control of the construction order

@@ -26,6 +26,7 @@
 #include "SDKmisc.h"
 #include "SDKmesh.h"
 #include "resource.h"
+#include "..\\..\\common\\output_debug.h"
 
 #pragma comment(lib,"DXUT.lib")
 #pragma comment(lib,"DXUTOpt.lib")

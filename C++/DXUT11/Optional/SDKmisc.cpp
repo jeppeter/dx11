@@ -10,6 +10,7 @@
 #include "DXUTres.h"
 #undef min // use __min instead
 #undef max // use __max instead
+#include "..\\..\\common\\output_debug.h"
 
 #include "DXUTGui.h"
 
@@ -230,7 +231,8 @@ HRESULT WINAPI DXUTFindDXSDKMediaFileCch( WCHAR* strDestPath, int cchDest,
     bool bFound;
     WCHAR strSearchFor[MAX_PATH];
 
-    if( NULL == strFilename || strFilename[0] == 0 || NULL == strDestPath || cchDest < 10 )
+	DEBUG_INFO("file %S\n",strFilename);
+	if( NULL == strFilename || strFilename[0] == 0 || NULL == strDestPath || cchDest < 10 )
         return E_INVALIDARG;
 
     // Get the exe name, and exe path
