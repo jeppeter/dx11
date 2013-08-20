@@ -235,6 +235,8 @@ void WINAPI DXUTSetCallbackD3D11SwapChainReleasing( LPDXUTCALLBACKD3D11SWAPCHAIN
 void WINAPI DXUTSetCallbackD3D11DeviceDestroyed( LPDXUTCALLBACKD3D11DEVICEDESTROYED pCallback, void* pUserContext = NULL );
 
 
+
+
 //--------------------------------------------------------------------------------------
 // Initialization
 //--------------------------------------------------------------------------------------
