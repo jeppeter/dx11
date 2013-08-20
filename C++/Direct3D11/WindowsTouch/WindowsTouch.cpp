@@ -1260,7 +1260,8 @@ int CaptureFullScreenFileD11(ID3D11Device *pDevice,ID3D11DeviceContext* pContext
 
     pContext->CopyResource(pBackBufferStaging,pBackBuffer);
 
-    hr = D3DX11SaveTextureToFile(pContext,pBackBufferStaging,D3DX11_IFF_BMP,L"z:\test.bmp");
+    SetLastError(0);
+    hr = D3DX11SaveTextureToFile(pContext,pBackBufferStaging,D3DX11_IFF_BMP,L"z:\\test.bmp");
     if(FAILED(hr))
     {
         ret = GetLastError() > 0 ? GetLastError() : 1;
