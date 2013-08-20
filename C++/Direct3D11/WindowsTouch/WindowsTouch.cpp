@@ -27,6 +27,8 @@
 #include "SDKmesh.h"
 #include "resource.h"
 
+#pragma comment(lib,"DXUT.lib")
+#pragma comment(lib,"DXUTOpt.lib")
 
 // animation data
 #define MAX_BONE_MATRICES 255
