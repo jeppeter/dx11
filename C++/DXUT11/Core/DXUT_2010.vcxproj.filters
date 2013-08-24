@@ -8,6 +8,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\common\output_debug.h" />
+    <ClInclude Include="..\..\common\uniansi.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DXUT.cpp" />
@@ -19,6 +20,7 @@
     <ClCompile Include="DXUTmisc.cpp" />
     <CLInclude Include="DXUTmisc.h" />
     <ClCompile Include="..\..\common\output_debug.cpp" />
+    <ClCompile Include="..\..\common\uniansi.cpp" />
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>

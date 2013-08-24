@@ -368,8 +368,10 @@
   <ItemGroup />
   <ItemGroup>
     <ClCompile Include="..\..\common\output_debug.cpp" />
+    <ClCompile Include="..\..\common\uniansi.cpp" />
     <ClCompile Include="DXUT.cpp" />
     <ClInclude Include="..\..\common\output_debug.h" />
+    <ClInclude Include="..\..\common\uniansi.h" />
     <CLInclude Include="DXUT.h" />
     <ClCompile Include="DXUTDevice11.cpp" />
     <CLInclude Include="DXUTDevice11.h" />

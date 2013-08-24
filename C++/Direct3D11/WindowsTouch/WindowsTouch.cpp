@@ -27,6 +27,7 @@
 #include "SDKmesh.h"
 #include "resource.h"
 #include "..\\..\\common\\output_debug.h"
+#include "..\\..\\common\\uniansi.h"
 
 #pragma comment(lib,"DXUT.lib")
 #pragma comment(lib,"DXUTOpt.lib")
@@ -1234,6 +1235,10 @@ int CaptureFullScreenFileD11(ID3D11Device *pDevice,ID3D11DeviceContext* pContext
     ID3D11Texture2D *pBackBuffer = NULL;
     ID3D11Texture2D *pBackBufferStaging = NULL;
     HRESULT hr;
+#ifdef _UNICODE
+    wchar_t *pFileToSaveW=NULL;
+    int filetosavesize=0;
+#endif
     int ret=1;
     hr = pSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (LPVOID*)&pBackBuffer);
     if(FAILED(hr))
@@ -1261,7 +1266,17 @@ int CaptureFullScreenFileD11(ID3D11Device *pDevice,ID3D11DeviceContext* pContext
     pContext->CopyResource(pBackBufferStaging,pBackBuffer);
 
     SetLastError(0);
-    hr = D3DX11SaveTextureToFile(pContext,pBackBufferStaging,D3DX11_IFF_BMP,L"z:\\test.bmp");
+#ifdef _UNICODE
+    ret = AnsiToUnicode((char*)filetosave,&pFileToSaveW,&filetosavesize);
+    if(ret < 0)
+    {
+        ret = GetLastError() ? GetLastError() : 1;
+        goto out;
+    }
+    hr = D3DX11SaveTextureToFile(pContext,pBackBufferStaging,D3DX11_IFF_BMP,pFileToSaveW);
+#else
+    hr = D3DX11SaveTextureToFile(pContext,pBackBufferStaging,D3DX11_IFF_BMP,filetosave);
+#endif
     if(FAILED(hr))
     {
         ret = GetLastError() > 0 ? GetLastError() : 1;
@@ -1272,6 +1287,9 @@ int CaptureFullScreenFileD11(ID3D11Device *pDevice,ID3D11DeviceContext* pContext
     ret = 0;
 
 out:
+#ifdef _UNICODE
+    AnsiToUnicode(NULL,&pFileToSaveW,&filetosavesize);
+#endif
     assert(ret >= 0);
     if(pBackBuffer)
     {
